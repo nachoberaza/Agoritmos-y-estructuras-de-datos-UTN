@@ -46,7 +46,7 @@ void printEndLine()
 }
 
 //En esta funcion se convierte un float en string, usando la libreria sstream
-void printNumber(float number)
+void printNumberWithEndl(float number)
 {
     ostringstream ss;
     ss << number;
@@ -54,13 +54,42 @@ void printNumber(float number)
     cout << s << '\n';
 }
 
+void printNumberWithEndl(int number)
+{
+    ostringstream ss;
+    ss << number;
+    string s(ss.str());
+    cout << s << '\n';
+}
+
+void printNumber(float number)
+{
+    ostringstream ss;
+    ss << number;
+    string s(ss.str());
+    cout << s;
+}
+
+void printNumber(int number)
+{
+    ostringstream ss;
+    ss << number;
+    string s(ss.str());
+    cout << s;
+}
+
+
 //Esta funcion pausa la consola
-void pauseScreen()  //Falta agregar que muestre un cartel con la indicacion que presione enter
+void pauseScreen() 
 {
     #ifdef _WIN32
+        printCustomPosterWithEndLine("Presione enter para continuar...");
+        printEndLine();
         system("pause");
     #endif
     #ifdef linux
+        printCustomPosterWithEndLine("Presione enter para continuar...");
+        printEndLine();
         system("read");
     #endif 
 }
@@ -75,3 +104,13 @@ int inputValue(string poster)
     cin >> value;
     return value;
 }
+
+void inputVector(float vector[],int positions){
+    int cont=0;
+    while(cont<positions){
+        vector[cont]=inputValue("Ingrese un valor: ");
+        cont++;
+    }
+}
+
+
