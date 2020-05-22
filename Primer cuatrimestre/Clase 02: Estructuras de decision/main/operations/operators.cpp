@@ -125,3 +125,95 @@ void calculateMoreRecentDate(Date date1, Date date2)
 		printCustomPosterWithEndLine("La segunda fecha es mas reciente ");
 	}
 }
+
+bool verifyTriangle(float l1,float l2,float l3){
+    bool result=false;
+    if((l1+l2)>l3)
+        result=true;
+    return result;
+}
+
+int getTriangleCategory(float l1,float l2,float l3){
+    int category=0;
+
+    if(l1==l2 && l1==l3){
+        category=1;
+    }else if((l1==l2 && l1!=l3)||(l2==l3 && l1!=l2)){
+        category=2;
+    }else{
+        category=3;
+    }
+    return category;
+}
+
+bool capicua(int number){
+    bool result=false;
+    int acumulador;
+    int i=0;
+    string inverseValue;
+    int originalValue=number;
+
+    while(i<5){
+        acumulador=number%10;
+        inverseValue+= to_string(acumulador);
+        number=number/10;
+        i++;
+    }
+    if(to_string(originalValue)==inverseValue){
+        result=true;
+    }
+    return result;
+}
+
+int calculateDays(int year,int month){
+    int days;
+
+    //Si el año es un multiplo de 4 significa que es biciesto
+    if((year%4)==0 && month==02){
+        days=29;
+    }else{
+        switch (month) {
+            case 1:
+                days=31;
+                break;
+            case 2:
+                days=28;
+                break;
+            case 3:
+                days=31;
+                break;
+            case 4:
+                days=30;
+                break;
+            case 5:
+                days=31;
+                break;
+            case 6:
+                days=30;
+                break;
+            case 7:
+                days=31;
+                break;
+            case 8:
+                days=31;
+                break;
+            case 9:
+                days=30;
+                break;
+            case 10:
+                days=31;
+                break;
+            case 11:
+                days=30;
+                break;
+            case 12:
+                days=31;
+                break;
+            default:
+                days=0;
+                break;
+        }
+    }
+
+    return days;
+}
