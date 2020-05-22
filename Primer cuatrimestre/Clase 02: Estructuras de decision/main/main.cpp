@@ -23,6 +23,8 @@ int main() {
                 "8) En base a los dados de un triangulo informar si es un equilatero, isoseles o escaleno");
         printCustomPosterWithEndLine("9) Determinar si un numero de 5 cifras es capicua ");
         printCustomPosterWithEndLine("10) Calcular la cantidad de dias de un mes ingresado de un Año en particular");
+        printCustomPosterWithEndLine("11) En base a la cantidad ingresada y el codigo de un producto calcular el precio total");
+        printCustomPosterWithEndLine("12) Calcular el precio de una prestacion medica en base al codigo del paciente ");
 
 
         printCustomPosterWithEndLine("0) Salir");
@@ -206,9 +208,37 @@ int main() {
             }
 
             case 11:{
+                string code=inputString("Ingrese el codigo del producto que desea comprar: ");
+                int quantity=inputValue("Ingrese la cantidad de unidades del producto que desea comprar: ");
+                float price=calculatePrice(quantity,code);
 
+                printCustomPoster("Articulo: ");
+                printCustomPoster(code);
+                printCustomPoster(" Cantidad: ");
+                printNumber(quantity);
+                printCustomPoster(" Precio: $");
+                printNumber(price);
+                pauseScreen();
+                break;
             }
 
+            case 12:{
+                string code=inputString("Ingrese el codigo del paciente: ");
+                int nroMedicSchedule=inputValue("Ingrese el numero de historia del paciente: ");
+                MedicTicket ticket=calculateMedicPrice(code,nroMedicSchedule);
+
+                printCustomPoster("Codigo paciente: ");
+                printCustomPoster(ticket.code);
+                printCustomPoster(" nro historia clinica: ");
+                printNumber(ticket.nroSchedule);
+                printCustomPoster(" Total a pagar: $");
+                printNumber(ticket.price);
+                printEndLine();
+
+                pauseScreen();
+
+                break;
+            }
             case 0: {
                 printCustomPosterWithEndLine("Saliendo del programa...");
                 exit = true;
