@@ -65,6 +65,22 @@ void printNumberWithEndl(int number)
     cout << s << '\n';
 }
 
+void printNumberWithEndl(double number)
+{
+    ostringstream ss;
+    ss << number;
+    string s(ss.str());
+    cout << s << '\n';
+}
+
+void printNumber(double number)
+{
+    ostringstream ss;
+    ss << number;
+    string s(ss.str());
+    cout << s;
+}
+
 void printNumber(float number)
 {
     ostringstream ss;

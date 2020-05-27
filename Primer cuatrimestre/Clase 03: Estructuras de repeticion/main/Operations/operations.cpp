@@ -264,3 +264,150 @@ void vectorOperations(const float vector[],int positions){
     printNumber(average);
 
 }
+
+int multiplicationBySums(int number1, int number2){
+    int product=0;
+    int cont=0;
+    while(cont<number2){
+        product+=number1;
+        cont++;
+    }
+    return product;
+}
+
+double factorial(int number){
+    double factorial=1;
+    int cont=1;
+    while(cont<number+1) {
+        factorial *=cont;
+        cont++;
+    }
+    return factorial;
+}
+
+double averageOfInputNumbers(){
+    int cont=0;
+    int input=1;
+    double acum=0;
+    bool exit=false;
+    double average=0;
+
+    while (!exit){
+        input=inputValue("Ingrese un numero: ");
+        if(input!=0){
+            acum+=input;
+            cont++;
+        }else{
+            exit=!exit;
+        }
+    }
+
+    average=acum/cont;
+
+    return average;
+}
+
+void operationWithEmployees(){
+    bool exit=false;
+    double input=0;
+
+    int minor900=0;
+    int equalOrMayor900=0;
+    int equalOrMayor1200=0;
+    int mayor2000=0;
+
+    while(!exit) {
+        input = inputValue("Ingrese el sueldo de un empleado: ");
+        if (input != 0) {
+
+            if (input < 900) {
+                minor900++;
+            } else if (input >= 900 && input < 1200) {
+                equalOrMayor900++;
+            } else if (input >= 1200 && input < 2000) {
+                equalOrMayor1200++;
+            } else {
+                mayor2000++;
+            }
+
+        } else {
+            exit = !exit;
+        }
+    }
+
+    printCustomPosterWithEndLine("Las estadisticas de los empleados son: ");
+
+    printNumber(minor900);
+    printCustomPoster(" empleado(s) cobra(n) menos de $900");
+    printTab();
+
+    printNumber(equalOrMayor900);
+    printCustomPoster(" empleado(s) cobra(n) $900 o mas, pero menos de $1200");
+    printEndLine();
+
+    printNumber(equalOrMayor1200);
+    printCustomPoster(" empleado(s) cobra(n) $1200 o mas, pero menos de $2000");
+    printTab();
+
+    printNumber(mayor2000);
+    printCustomPoster(" empleado(s) cobra(n) $2000 o mas");
+    printEndLine();
+}
+
+void operationWithAges(){
+    int input=0;
+
+    int cont18=0;
+    int cont19=0;
+    int cont20=0;
+    int cont21=0;
+    int cont22=0;
+
+    bool exit=false;
+
+    while(!exit){
+        input=inputValue("Ingrese una edad: ");
+        if (input!=0) {
+            if (input < 18 or input > 22) {
+                printCustomPosterWithEndLine("Ingrese una edad entre 18 y 22 ");
+            } else {
+                if(input==18){
+                    cont18++;
+                } else if(input==19){
+                    cont19++;
+                }else if(input==20){
+                    cont20++;
+                }else if (input==21){
+                    cont21++;
+                }else{
+                    cont22++;
+                }
+            }
+        }else{
+            exit=!exit;
+        }
+    }
+
+    printCustomPosterWithEndLine("En numero de veces que aparecio cada edad es: ");
+
+    printCustomPoster("La edad 18: ");
+    printNumber(cont18);
+    printCustomPosterWithEndLine(" veces");
+
+    printCustomPoster("La edad 19: ");
+    printNumber(cont19);
+    printCustomPosterWithEndLine(" veces");
+
+    printCustomPoster("La edad 20: ");
+    printNumber(cont20);
+    printCustomPosterWithEndLine(" veces");
+
+    printCustomPoster("La edad 21: ");
+    printNumber(cont21);
+    printCustomPosterWithEndLine(" veces");
+
+    printCustomPoster("La edad 22: ");
+    printNumber(cont22);
+    printCustomPosterWithEndLine(" veces");
+
+}
