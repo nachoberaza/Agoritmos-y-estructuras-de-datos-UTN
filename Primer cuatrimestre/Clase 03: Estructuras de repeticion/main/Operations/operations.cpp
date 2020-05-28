@@ -19,13 +19,6 @@ struct Alumn {
     float average;
 };
 
-struct Triangle {
-    float l1;
-    float l2;
-    float l3;
-    string categoryByL;
-};
-
 void fillVector(int vector[], int elementsQuantity) {
     int cont = 0;
     while (cont < elementsQuantity) {
@@ -525,4 +518,113 @@ void calculateAverageOfAllAsignatures(Alumn alumns[], int positions) {
 
         cont++;
     }
+}
+
+void inputBankAccountData() {
+    bool exit = false;
+    int contDeu = 0;
+    int contAcre = 0;
+
+    int accountId;
+    string inputName;
+    int inputBalance;
+
+    while (!exit) {
+        inputName = inputString("Ingrese el nombre del cliente de la cuenta: ");
+        inputBalance = inputValue("Ingrese el saldo de la cuenta: ");
+        accountId = inputValue("Ingrese el numero de su cuenta: ");
+        if (accountId > 0) {
+            printCustomPoster("La cuenta con id: ");
+            printNumber(accountId);
+            printCustomPoster(" del cliente: ");
+            printCustomPoster(inputName);
+            printCustomPoster(" tiene estado de ");
+
+            if (inputBalance < 0) {
+                contDeu++;
+                printCustomPosterWithEndLine("deudor");
+            } else {
+                contAcre++;
+                printCustomPosterWithEndLine("acreedor");
+            }
+            printEndLine();
+
+        } else {
+            exit = !exit;
+        }
+
+    }
+    printCustomPosterWithEndLine("Cantidades:");
+    printCustomPoster("Acreedores: ");
+    printNumber(contAcre);
+    printTab();
+    printCustomPoster("Deudores: ");
+    printNumber(contDeu);
+
+}
+
+float getMinorElement(const float vector[], int positions) {
+    float minor = vector[0];
+    int cont = 1;
+    while (cont < positions) {
+
+        if (vector[cont] < minor)
+            minor = vector[cont];
+
+        cont++;
+    }
+
+    return minor;
+}
+
+float getMayorElement(const float vector[], int positions) {
+    float mayor = vector[0];
+    int cont = 1;
+
+    while (cont < positions) {
+        if (mayor < vector[cont]) {
+            mayor = vector[cont];
+        }
+        cont++;
+    }
+    return mayor;
+};
+
+int getMayorPosition(const float vector[], int positions) {
+    float mayor = vector[0];
+    int mayorPosition = 0;
+    int cont = 0;
+    while (cont < positions) {
+
+        if (vector[cont] > mayor) {
+            mayor = vector[cont];
+            mayorPosition = cont;
+        }
+        cont++;
+    }
+
+    return mayorPosition + 1;
+}
+
+int getNumberOfRepetitions(const float vector[], int positions, float number) {
+    int repetitions = 0;
+    int cont = 0;
+    while (cont < positions) {
+        if (vector[cont] == number)
+            repetitions++;
+        cont++;
+    }
+    return repetitions;
+}
+
+float getMayorElementAndExcludeValue(const float vector[], int positions, float number) {
+    float mayor = -1000;
+    int cont = 0;
+    while (cont < positions) {
+        if ((vector[cont] > mayor) and (vector[cont] != number))
+            mayor = vector[cont];
+
+        cont++;
+    }
+    return mayor;
 }

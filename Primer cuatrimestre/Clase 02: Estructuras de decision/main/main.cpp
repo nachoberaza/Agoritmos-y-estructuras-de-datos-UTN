@@ -17,10 +17,8 @@ int main() {
         printCustomPosterWithEndLine("4) Calcular el area de un triangulo ");
         printCustomPosterWithEndLine("5) Calcular el mayor numero ingresado ");
         printCustomPosterWithEndLine("6) Calcular la fecha mas reciente ");
-        printCustomPosterWithEndLine(
-                "7) En base a los lados ingresados de un triangulo, informar si es posible formar un triangulo");
-        printCustomPosterWithEndLine(
-                "8) En base a los dados de un triangulo informar si es un equilatero, isoseles o escaleno");
+        printCustomPosterWithEndLine("7) En base a los lados ingresados de un triangulo, informar si es posible formar un triangulo");
+        printCustomPosterWithEndLine("8) En base a los dados de un triangulo informar si es un equilatero, isoseles o escaleno");
         printCustomPosterWithEndLine("9) Determinar si un numero de 5 cifras es capicua ");
         printCustomPosterWithEndLine("10) Calcular la cantidad de dias de un mes ingresado de un Año en particular");
         printCustomPosterWithEndLine("11) En base a la cantidad ingresada y el codigo de un producto calcular el precio total");
