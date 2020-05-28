@@ -7,7 +7,23 @@ struct Alumn {
     string name;
     float note1;
     float note2;
+
+    float noteAMI;
+    float noteChe;
+    float noteAlg;
+    float noteArc;
+    float noteDis;
+    float noteSyo;
+    float noteAlgoritms;
+
     float average;
+};
+
+struct Triangle {
+    float l1;
+    float l2;
+    float l3;
+    string categoryByL;
 };
 
 void fillVector(int vector[], int elementsQuantity) {
@@ -168,7 +184,7 @@ void calculateCurseStadistics(Alumn alumns[], int quantity) {
 }
 
 string translateToRom(int number) {
-    string rom = "";
+    string rom;
 
     int units, tens, cents, thousands;
 
@@ -410,4 +426,103 @@ void operationWithAges(){
     printNumber(cont22);
     printCustomPosterWithEndLine(" veces");
 
+}
+
+void infiniteFactorial() {
+    int input = 0;
+    bool exit = false;
+    while (!exit) {
+        input = inputValue("Ingrese un numero para saber su factorial: ");
+        if (input == 0) {
+            exit = !exit;
+        } else {
+            if (input < 0) {
+                printCustomPosterWithEndLine("Ingrese un numero positivo");
+            } else {
+                printCustomPoster("El factorial del numero ingresado es: ");
+                printNumberWithEndl(factorial(input));
+            }
+        }
+
+    }
+}
+
+void inputLofTriangles() {
+    int l1;
+    int l2;
+    int l3;
+
+    int contEq = 0;
+    int contIs = 0;
+    int contEsc = 0;
+
+    bool exit = false;
+
+    while (!exit) {
+
+        l1 = inputValue("1er lado: ");
+        l2 = inputValue("2do lado: ");
+        l3 = inputValue("3er lado: ");
+        printEndLine();
+
+        if (l1 <= 0 or l2 <= 0 or l3 <= 0) {
+            exit = !exit;
+        } else {
+            if (l1 == l2 and l2 == l3) {
+                contEq++;
+            } else if ((l1 == l2 and l1 != l3) or (l2 == l3 and l2 != l1) or (l1 == l3 and l1 != l2)) {
+                contEsc++;
+            } else /*if(l1!=l2 and l2!=l3)*/{
+                contIs++;
+            }
+        }
+    }
+
+    printEndLine();
+    printCustomPosterWithEndLine("Cantidaddes de cada categoria cada triangulo: ");
+
+    printNumber(contEq);
+    printCustomPosterWithEndLine(" triangulos equilateros");
+
+    printNumber(contEsc);
+    printCustomPosterWithEndLine(" triangulos escalenos");
+
+    printNumber(contIs);
+    printCustomPosterWithEndLine(" triangulos isosceles");
+
+}
+
+void inputAlumnsAsignatures(Alumn alumns[], int positions) {
+    int cont = 0;
+    while (cont < positions) {
+        alumns[cont].name = inputString("Ingrese el nombre del alumno: ");
+        alumns[cont].noteAMI = inputValue("Nota de Analisis matematico: ");
+        alumns[cont].noteArc = inputValue("Nota de Arquitectura de computadoras: ");
+        alumns[cont].noteChe = inputValue("Nota de Quimica: ");
+        alumns[cont].noteAlg = inputValue("Nota de Algebra: ");
+        alumns[cont].noteAlgoritms = inputValue("Nota de Algoritmos: ");
+        alumns[cont].noteSyo = inputValue("Nota de Sistemas y organizaciones: ");
+        alumns[cont].noteDis = inputValue("Nota de Matematica discreta: ");
+        printEndLine();
+
+        cont++;
+    }
+}
+
+void calculateAverageOfAllAsignatures(Alumn alumns[], int positions) {
+    int cont = 0;
+    //Esta variable sirve como auxiliar
+    Alumn alumn;
+    while (cont < positions) {
+        alumn = alumns[cont];
+        alumns[cont].average =
+                (alumn.noteDis + alumn.noteSyo + alumn.noteAlgoritms + alumn.noteAlg + alumn.noteArc + alumn.noteChe +
+                 alumn.noteAMI) / 7;
+        printCustomPoster("El promedio del alumno ");
+        printCustomPoster(alumn.name);
+        printCustomPoster(" es: ");
+        printNumberWithEndl(alumns[cont].average);
+
+        cont++;
+    }
 }

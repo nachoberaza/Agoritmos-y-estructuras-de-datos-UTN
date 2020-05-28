@@ -19,7 +19,6 @@ using namespace std;
 
 /*----Output----*/
 
-//Esta funcion limpia la pantalla
 void clearScreen()
 {
     #ifdef _WIN32
@@ -106,7 +105,6 @@ void printVector(int vector[],int elementsQuantity){
     }
 }
 
-//Esta funcion pausa la consola
 void pauseScreen() 
 {
     #ifdef _WIN32
