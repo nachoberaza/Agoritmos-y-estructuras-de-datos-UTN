@@ -147,3 +147,9 @@ void inputVector(float vector[],int positions){
 }
 
 
+char continueScreen() {
+    char c;
+    printCustomPosterWithEndLine("¿Desea continuar?[S/N]");
+    cin >> c;
+    return c;
+}

@@ -1,5 +1,7 @@
 #include "../input-output functions/input-output.cpp"
+#include "./LocalDate.cpp"
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -18,6 +20,14 @@ struct Alumn {
 
     float average;
 };
+
+
+struct Person {
+    string name;
+    int age;
+    Date dateOfBirth;
+};
+
 
 void fillVector(int vector[], int elementsQuantity) {
     int cont = 0;
@@ -191,74 +201,137 @@ string translateToRom(int number) {
     number /= 10;
 
 
-    switch( thousands )
-    {
-        case 1: rom+=  "M"; break;
-        case 2: rom+=  "MM"; break;
-        case 3: rom+=  "MMM"; break;
-        default: rom+=""; break;
+    switch (thousands) {
+        case 1:
+            rom += "M";
+            break;
+        case 2:
+            rom += "MM";
+            break;
+        case 3:
+            rom += "MMM";
+            break;
+        default:
+            rom += "";
+            break;
     }
 
-    switch( cents )
-    {
-        case 1: rom+=  "C"; break;
-        case 2: rom+=  "CC"; break;
-        case 3: rom+=  "CCC"; break;
-        case 4: rom+=  "CD"; break;
-        case 5: rom+=  "D"; break;
-        case 6: rom+=  "DC"; break;
-        case 7: rom+=  "DCC"; break;
-        case 8: rom+=  "DCCC"; break;
-        case 9: rom+=  "CM"; break;
-        default: rom+=""; break;
+    switch (cents) {
+        case 1:
+            rom += "C";
+            break;
+        case 2:
+            rom += "CC";
+            break;
+        case 3:
+            rom += "CCC";
+            break;
+        case 4:
+            rom += "CD";
+            break;
+        case 5:
+            rom += "D";
+            break;
+        case 6:
+            rom += "DC";
+            break;
+        case 7:
+            rom += "DCC";
+            break;
+        case 8:
+            rom += "DCCC";
+            break;
+        case 9:
+            rom += "CM";
+            break;
+        default:
+            rom += "";
+            break;
     }
 
     switch (tens) {
-        case 1: rom += "X"; break;
-        case 2: rom += "XX"; break;
-        case 3: rom +="XXX"; break;
-        case 4: rom += "XL"; break;
-        case 5: rom += "L"; break;
-        case 6: rom += "LX"; break;
-        case 7: rom += "LXX"; break;
-        case 8: rom += "LXXX"; break;
-        case 9: rom += "XC"; break;
-        default:{
-            rom+="";
+        case 1:
+            rom += "X";
+            break;
+        case 2:
+            rom += "XX";
+            break;
+        case 3:
+            rom += "XXX";
+            break;
+        case 4:
+            rom += "XL";
+            break;
+        case 5:
+            rom += "L";
+            break;
+        case 6:
+            rom += "LX";
+            break;
+        case 7:
+            rom += "LXX";
+            break;
+        case 8:
+            rom += "LXXX";
+            break;
+        case 9:
+            rom += "XC";
+            break;
+        default: {
+            rom += "";
             break;
         }
     }
 
     switch (units) {
-        case 1: rom +="I"; break;
-        case 2: rom += "II"; break;
-        case 3: rom += "III"; break;
-        case 4: rom += "IV"; break;
-        case 5: rom += "V"; break;
-        case 6: rom +="VI"; break;
-        case 7: rom += "VII"; break;
-        case 8: rom += "VIII"; break;
-        case 9: rom += "IX"; break;
-        default:{
-            rom+="";
+        case 1:
+            rom += "I";
+            break;
+        case 2:
+            rom += "II";
+            break;
+        case 3:
+            rom += "III";
+            break;
+        case 4:
+            rom += "IV";
+            break;
+        case 5:
+            rom += "V";
+            break;
+        case 6:
+            rom += "VI";
+            break;
+        case 7:
+            rom += "VII";
+            break;
+        case 8:
+            rom += "VIII";
+            break;
+        case 9:
+            rom += "IX";
+            break;
+        default: {
+            rom += "";
             break;
         }
     }
 
     return rom;
 }
-void vectorOperations(const float vector[],int positions){
-    float average=0;
-    float aux=0;
-    float contMax=0;
-    float sum=0;
-    int cont=0;
 
-    while(cont<positions){
-        if(vector[cont]< -10){
-            sum+=vector[cont];
-        }else if(vector[cont]>100){
-            aux+=vector[cont];
+void vectorOperations(const float vector[], int positions) {
+    float average = 0;
+    float aux = 0;
+    float contMax = 0;
+    float sum = 0;
+    int cont = 0;
+
+    while (cont < positions) {
+        if (vector[cont] < -10) {
+            sum += vector[cont];
+        } else if (vector[cont] > 100) {
+            aux += vector[cont];
             contMax++;
         }
         cont++;
@@ -269,63 +342,63 @@ void vectorOperations(const float vector[],int positions){
     printTab();
 
     printCustomPoster("El promedio de los numeros mayores a 100 es: ");
-    average=(float)aux/contMax;
+    average = (float) aux / contMax;
     printNumber(average);
 
 }
 
-int multiplicationBySums(int number1, int number2){
-    int product=0;
-    int cont=0;
-    while(cont<number2){
-        product+=number1;
+int multiplicationBySums(int number1, int number2) {
+    int product = 0;
+    int cont = 0;
+    while (cont < number2) {
+        product += number1;
         cont++;
     }
     return product;
 }
 
-double factorial(int number){
-    double factorial=1;
-    int cont=1;
-    while(cont<number+1) {
-        factorial *=cont;
+double factorial(int number) {
+    double factorial = 1;
+    int cont = 1;
+    while (cont < number + 1) {
+        factorial *= cont;
         cont++;
     }
     return factorial;
 }
 
-double averageOfInputNumbers(){
-    int cont=0;
-    int input=1;
-    double acum=0;
-    bool exit=false;
-    double average=0;
+double averageOfInputNumbers() {
+    int cont = 0;
+    int input = 1;
+    double acum = 0;
+    bool exit = false;
+    double average = 0;
 
-    while (!exit){
-        input=inputValue("Ingrese un numero: ");
-        if(input!=0){
-            acum+=input;
+    while (!exit) {
+        input = inputValue("Ingrese un numero: ");
+        if (input != 0) {
+            acum += input;
             cont++;
-        }else{
-            exit=!exit;
+        } else {
+            exit = !exit;
         }
     }
 
-    average=acum/cont;
+    average = acum / cont;
 
     return average;
 }
 
-void operationWithEmployees(){
-    bool exit=false;
-    double input=0;
+void operationWithEmployees() {
+    bool exit = false;
+    double input = 0;
 
-    int minor900=0;
-    int equalOrMayor900=0;
-    int equalOrMayor1200=0;
-    int mayor2000=0;
+    int minor900 = 0;
+    int equalOrMayor900 = 0;
+    int equalOrMayor1200 = 0;
+    int mayor2000 = 0;
 
-    while(!exit) {
+    while (!exit) {
         input = inputValue("Ingrese el sueldo de un empleado: ");
         if (input != 0) {
 
@@ -363,37 +436,37 @@ void operationWithEmployees(){
     printEndLine();
 }
 
-void operationWithAges(){
-    int input=0;
+void operationWithAges() {
+    int input = 0;
 
-    int cont18=0;
-    int cont19=0;
-    int cont20=0;
-    int cont21=0;
-    int cont22=0;
+    int cont18 = 0;
+    int cont19 = 0;
+    int cont20 = 0;
+    int cont21 = 0;
+    int cont22 = 0;
 
-    bool exit=false;
+    bool exit = false;
 
-    while(!exit){
-        input=inputValue("Ingrese una edad: ");
-        if (input!=0) {
+    while (!exit) {
+        input = inputValue("Ingrese una edad: ");
+        if (input != 0) {
             if (input < 18 or input > 22) {
                 printCustomPosterWithEndLine("Ingrese una edad entre 18 y 22 ");
             } else {
-                if(input==18){
+                if (input == 18) {
                     cont18++;
-                } else if(input==19){
+                } else if (input == 19) {
                     cont19++;
-                }else if(input==20){
+                } else if (input == 20) {
                     cont20++;
-                }else if (input==21){
+                } else if (input == 21) {
                     cont21++;
-                }else{
+                } else {
                     cont22++;
                 }
             }
-        }else{
-            exit=!exit;
+        } else {
+            exit = !exit;
         }
     }
 
@@ -628,3 +701,212 @@ float getMayorElementAndExcludeValue(const float vector[], int positions, float 
     }
     return mayor;
 }
+
+void inputUndefinedQuantityValues() {
+    float input;
+    float max = -1.17549e+38;
+    float min = 1.17549e+38;
+    int cont = 0;
+    float acum = 0;
+    float average;
+
+    bool exit = false;
+
+    while (!exit) {
+        input = (float) inputValue("Ingrese un valor: ");
+        if (input == 0.0) {
+            exit = !exit;
+        } else {
+            if ((input < 0) and (input > max))
+                max = input;
+
+            if ((input > 0) and (input < min))
+                min = input;
+
+            acum += input;
+            cont++;
+        }
+    }
+    printCustomPoster("El numero mayor negativo: ");
+    printNumberWithEndl(max);
+
+    printCustomPoster("El numero menor positivo es: ");
+    printNumberWithEndl(min);
+
+    printCustomPoster("El promedio de los numeros ingresados es: ");
+    average = acum / (float) cont;
+    printNumberWithEndl(average);
+
+}
+
+Date getMayorDate(Date date1, Date date2) {
+    //Date present = getLocalTime();
+    Date mayor = {};
+    if (date1.year == date2.year) {
+        if (date1.month == date2.month) {
+            if (date1.day == date2.day) {
+                mayor.year = NULL;
+                mayor.month = NULL;
+                mayor.day = NULL;
+            } else if (date2.day > date1.day) {
+                mayor = date2;
+            } else {
+                mayor = date1;
+            }
+        } else if (date2.month > date1.month) {
+            mayor = date2;
+        } else {
+            mayor = date1;
+        }
+    } else if (date2.year > date1.year) {
+        mayor = date2;
+    } else {
+        mayor = date1;
+    }
+    return mayor;
+}
+
+Date getMinorDate(Date date1, Date date2) {
+    //Date present = getLocalTime();
+    Date minor = {};
+    if (date1.year == date2.year) {
+        if (date1.month == date2.month) {
+            if (date1.day == date2.day) {
+                minor.year = NULL;
+                minor.month = NULL;
+                minor.day = NULL;
+            } else if (date1.day < date2.day) {
+                minor = date1;
+            } else {
+                minor = date2;
+            }
+        } else if (date1.month < date2.month) {
+            minor = date1;
+        } else {
+            minor = date2;
+        }
+    } else if (date1.year < date2.year) {
+        minor = date1;
+    } else {
+        minor = date2;
+    }
+    return minor;
+}
+
+bool isEqualDate(Date date1, Date date2) {
+    bool equal = false;
+    if ((date1.year == date2.year) && (date1.month == date2.month) && (date1.day == date2.day))
+        equal = !equal;
+    return equal;
+}
+
+void inputPersonData() {
+    Person oldestPerson;
+    Person youngestPerson;
+
+    /*
+    oldestPerson.dateOfBirth.year=0;
+    oldestPerson.dateOfBirth.day=0;
+    oldestPerson.dateOfBirth.month=0;
+    */
+    oldestPerson.dateOfBirth = getLocalTime();
+    //youngestPerson.dateOfBirth=getLocalTime();
+
+    youngestPerson.dateOfBirth.year = 0;
+    youngestPerson.dateOfBirth.month = 0;
+    youngestPerson.dateOfBirth.day = 0;
+
+    string name;
+    Date date{};
+
+    bool exit = false;
+    while (!exit) {
+        name = inputString("Ingrese el nombre de la persona: ");
+        printCustomPosterWithEndLine("Ingrese la fecha de nacimiento: ");
+        date.year = inputValue("Anio: ");
+        date.month = inputValue("Mes: ");
+        date.day = inputValue("Dia: ");
+
+        if (name == "FIN") {
+            exit = !exit;
+        } else {
+
+            //Comparamos segun quien tiene la fecha de nacimiento mas chica y quien la mas grande
+
+            if (isEqualDate(date, getMayorDate(date, youngestPerson.dateOfBirth))) {
+                youngestPerson.dateOfBirth = date;
+                youngestPerson.name = name;
+            }
+
+            if (isEqualDate(date, getMinorDate(date, oldestPerson.dateOfBirth))) {
+                oldestPerson.dateOfBirth = date;
+                oldestPerson.name = name;
+            }
+
+
+            //
+        }
+    }
+
+    printCustomPoster("La persona mas joven es : ");
+    printCustomPoster(youngestPerson.name);
+    printTab();
+    //printCustomPoster(" con: ");
+    //printNumberWithEndl(youngestPerson.age);
+    printCustomPoster(" y la persona mas vieja es : ");
+    printCustomPoster(oldestPerson.name);
+    printTab();
+    //printCustomPoster(" con: ");
+    //printNumberWithEndl(oldestPerson.age);
+}
+
+int shot() {
+    return (rand() % 6) + 1;
+}
+
+void shotStadistics() {
+    srand(time(NULL));
+    char response = '0';
+
+    float scoreAverage = 0;
+    float score = 0;
+    float aux = 0;
+    float maxScore = 0;
+    int scoreAcum = 0;
+    int cont = 0;
+
+    float shots[5];
+
+    bool exit = false;
+
+
+    while (!exit) {
+
+        shots[1] = (float) shot();
+        shots[2] = (float) shot();
+        shots[3] = (float) shot();
+        shots[4] = (float) shot();
+        shots[0] = (float) shot();
+
+        aux = getMayorElementAndExcludeValue(shots, 5, 0);
+        score = aux + getMayorElementAndExcludeValue(shots, 5, aux);
+        scoreAcum += (int) score;
+        if (score > maxScore)
+            maxScore = score;
+
+        printCustomPoster("Su puntaje: ");
+        printNumberWithEndl(score);
+        clearScreen();
+        response = continueScreen();
+        if ((response == 'N') || (response == 'n'))
+            exit = !exit;
+        cont++;
+    }
+
+    printCustomPosterWithEndLine("El puntaje maximo es: ");
+    printNumberWithEndl(maxScore);
+    scoreAverage = (float) scoreAcum / (float) cont;
+    printCustomPosterWithEndLine("El promedio de puntajes es: ");
+    printNumberWithEndl(scoreAverage);
+}
+
