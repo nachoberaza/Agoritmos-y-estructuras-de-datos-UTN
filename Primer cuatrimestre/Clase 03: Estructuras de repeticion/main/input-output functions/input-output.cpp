@@ -130,18 +130,26 @@ int inputValue(string poster)
     return value;
 }
 
-string inputString(string poster)
-{
+string inputString(string poster) {
     string value;
     printCustomPoster(poster);
     cin >> value;
     return value;
 }
 
-void inputVector(float vector[],int positions){
-    int cont=0;
-    while(cont<positions){
-        vector[cont]=inputValue("Ingrese un valor: ");
+
+char inputChar(string poster) {
+    char value;
+    printCustomPoster(poster);
+    cin >> value;
+    return value;
+}
+
+
+void inputVector(float vector[], int positions) {
+    int cont = 0;
+    while (cont < positions) {
+        vector[cont] = inputValue("Ingrese un valor: ");
         cont++;
     }
 }

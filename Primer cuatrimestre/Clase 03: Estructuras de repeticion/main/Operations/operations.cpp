@@ -22,12 +22,26 @@ struct Alumn {
 };
 
 
+struct Studies {
+    char studies;
+    char status;
+};
+
 struct Person {
     string name;
+    string lastName;
+    Studies studies;
+    char gender;
     int age;
     Date dateOfBirth;
 };
 
+struct Family {
+    string lastName;
+    string home;
+    char homeType;
+    int integrantsQuantity;
+};
 
 void fillVector(int vector[], int elementsQuantity) {
     int cont = 0;
@@ -910,3 +924,115 @@ void shotStadistics() {
     printNumberWithEndl(scoreAverage);
 }
 
+void familySurvey() {
+    //atributos de la familia
+    Family family;
+    float ageAveragePerFamily = 0;
+    float countIntegrantsAge = 0;
+    float maxAgeAverage = 0;
+    string familyWithMaxAgeAverage;
+
+    //atribytos de la persona
+    Person integrant;
+
+    //variables de funcionamiento
+    bool exit = false;
+    int cont = 0;
+    int agesCount = 0;
+    int contAnalfa = 0;
+    int contHabitants = 0;
+    int contMaxIntegrant = 0;
+    int contIntegrantsWithPrimariesStudies = 0;
+    int contHabitantsWithIncompleteSecundariesStudies = 0;
+    int contFemHabitantsWithThirCompleteStudies = 0;
+
+    string homeWithMoreIntegrants;
+
+    while (!exit) {
+        //ingreso de datos de la familia
+        printCustomPosterWithEndLine("Ingrese los datos de la familia: ");
+        printEndLine();
+        family.lastName = inputString("Apellido: ");
+        family.home = inputString("Domicilio: ");
+        family.homeType = inputChar("Tipo de domicilio: ");
+        family.integrantsQuantity = inputValue("Cantidad de integrantes: ");
+        printEndLine();
+        contHabitants += family.integrantsQuantity;
+
+        if (family.integrantsQuantity == 0) {
+            printCustomPosterWithEndLine("Finalizado el ingreso de datos.");
+            exit = !exit;
+        } else {
+            cont = 0;
+            //ingreso de datos de los integrantes
+            while (cont < family.integrantsQuantity) {
+                integrant.name = inputString("Nombre del integrante: ");
+                integrant.age = inputValue("Edad: ");
+                integrant.studies.studies = inputChar(
+                        "Estudios alcanzados (N:no tiene, P:primaria ,S:secundaria ,T:terciario): ");
+
+                agesCount += integrant.age;
+                countIntegrantsAge += (float) integrant.age;
+
+                if ((integrant.gender == 'F') && (integrant.studies.studies == 'T' && integrant.studies.status == 'C'))
+                    contFemHabitantsWithThirCompleteStudies++;
+
+                if (integrant.studies.studies != 'N')
+                    integrant.studies.status = inputChar("Estado de los estudios (I:incompleto, C:completo): ");
+
+                //encuestados con estudios primarios completados
+                if ((integrant.studies.studies == 'P' && integrant.studies.status == 'C') ||
+                    ((integrant.studies.studies == 'S' || integrant.studies.studies == 'T') &&
+                     integrant.studies.status == 'I'))
+                    contIntegrantsWithPrimariesStudies++;
+
+                //Habitantes con estudios secundarios incompletos
+                if ((integrant.studies.studies == 'S') && (integrant.studies.status == 'I'))
+                    contHabitantsWithIncompleteSecundariesStudies++;
+
+                //encuestados analfabetas
+                if (integrant.age >= 10 && ((integrant.studies.studies == 'P' && integrant.studies.status == 'I') ||
+                                            integrant.studies.studies == 'N'))
+                    contAnalfa++;
+
+                cont++;
+            }
+
+            //domicilio (departamento) de la familia con mayor cantidad de integrantes
+            if ((family.homeType == 'D') && (family.integrantsQuantity > contMaxIntegrant)) {
+                homeWithMoreIntegrants = family.home;
+                contMaxIntegrant++;
+            }
+
+            //familia con mayor promedio de edad
+            if ((countIntegrantsAge / (float) family.integrantsQuantity) > maxAgeAverage) {
+                maxAgeAverage = (countIntegrantsAge / (float) family.integrantsQuantity);
+                familyWithMaxAgeAverage = family.lastName;
+            }
+        }
+
+    }
+
+    printCustomPoster("La cantidad de encuestados con estudios primarios completados: ");
+    printNumberWithEndl(contIntegrantsWithPrimariesStudies);
+
+    printCustomPoster("El porcentaje de analfabetos: ");
+    printNumberWithEndl((contAnalfa / contHabitants) * 100);
+
+    printCustomPoster("El domicilio (dpto.) de la familia con mayor integrantes: ");
+    printCustomPosterWithEndLine(homeWithMoreIntegrants);
+
+    printCustomPoster("El promedio de edades de los habitantes: ");
+    printNumberWithEndl(agesCount / contHabitants);
+
+    printCustomPoster("La familia con mayor promedio de edades: ");
+    printCustomPosterWithEndLine(familyWithMaxAgeAverage);
+
+    printCustomPoster("La cantidad de habitantes con estudios secundarios incompletos: ");
+    printNumberWithEndl(contHabitantsWithIncompleteSecundariesStudies);
+
+    printCustomPoster("El porcentaje de habitantes femeninos con estudios terciarios completados: ");
+    printNumberWithEndl((contFemHabitantsWithThirCompleteStudies / contHabitants) * 100);
+
+
+}
