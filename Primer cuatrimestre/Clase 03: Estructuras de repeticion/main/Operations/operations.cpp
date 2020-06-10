@@ -21,7 +21,6 @@ struct Alumn {
     float average;
 };
 
-
 struct Studies {
     char studies;
     char status;
@@ -41,6 +40,24 @@ struct Family {
     string home;
     char homeType;
     int integrantsQuantity;
+};
+
+struct Container {
+    int id;
+    int size;
+    int destiny;
+};
+
+struct Passager {
+    int nroPasaport;
+    int priceOfTicket;
+};
+
+struct Fligth {
+    int id;
+    string destiny;
+    int recaudation;
+    int quantityPlaces;
 };
 
 void fillVector(int vector[], int elementsQuantity) {
@@ -1034,5 +1051,133 @@ void familySurvey() {
     printCustomPoster("El porcentaje de habitantes femeninos con estudios terciarios completados: ");
     printNumberWithEndl((contFemHabitantsWithThirCompleteStudies / contHabitants) * 100);
 
+
+}
+
+void containerShip() {
+
+    Container container = {};
+
+    int contPort1 = 0;
+    int contPort2 = 0;
+    int contPort3 = 0;
+
+    int sizeAcum = 0;
+    int maxSize = 0;
+    int idOfMostBigger = 0;
+
+    bool exit = false;
+
+    while (!exit) {
+        container.id = inputValue("Ingrese el identificador del contenedor: ");
+        if (container.id == 0) {
+            exit = !exit;
+        } else {
+
+            container.destiny = inputValue("Ingrese el numero del puerto de destino (1-3): ");
+
+            if (container.destiny == 1) {
+                contPort1++;
+            } else if (container.destiny == 2) {
+                contPort2++;
+            } else if (container.destiny == 3) {
+                contPort3++;
+            } else {
+                printCustomPosterWithEndLine("Destino no valido.");
+            }
+
+
+            container.size = inputValue("Ingrese el peso del contenedor (Kg): ");
+            if (container.size >= maxSize) {
+                maxSize = container.size;
+                idOfMostBigger = container.id;
+            }
+            sizeAcum += container.size;
+
+        }
+    }
+    printEndLine();
+    printCustomPoster("El peso total que el barco debe trasladar es de: ");
+    printNumber(sizeAcum);
+    printCustomPosterWithEndLine(" Kg");
+
+    printCustomPoster("El id del contenedor mas pesado: ");
+    printNumberWithEndl(idOfMostBigger);
+
+    printCustomPosterWithEndLine("Contenedores por puerto: ");
+    printCustomPoster("Puerto 1: ");
+    printNumber(contPort1);
+    printCustomPosterWithEndLine(" contenedores");
+    printCustomPoster("Puerto 2: ");
+    printNumber(contPort2);
+    printCustomPosterWithEndLine(" contenedores");
+    printCustomPoster("Puerto 3: ");
+    printNumber(contPort3);
+    printCustomPosterWithEndLine(" contenedores");
+
+}
+
+void fligthInformation() {
+
+    Passager passager = {};
+    Fligth mostRecaudationF = {};
+    Fligth flight = {};
+
+    bool exit = false;
+
+    int priceSum = 0;
+    int contPassagers = 0;
+    int mostRecaudationFlight = 0;
+
+    while (!exit) {
+        clearScreen();
+        flight.id = inputValue("Ingrese el id del vuelo: ");
+        if (flight.id == 0) {
+            exit = !exit;
+        } else {
+
+            contPassagers = 0;
+            priceSum = 0;
+            flight.destiny = inputString("Ingrese el destino (sin espacios): ");
+            flight.quantityPlaces = inputValue("Ingrese la cantidad de asientos ocupados: ");
+
+            while (contPassagers < flight.quantityPlaces) {
+                //Ingreso de datos del pasajero
+                passager.nroPasaport = inputValue("Ingrese el id del pasajero: ");
+                passager.priceOfTicket = inputValue("Ingrese el precio del pasaje (en dolares): ");
+
+                priceSum += passager.priceOfTicket;
+
+                contPassagers++;
+            }
+
+            if (priceSum > mostRecaudationFlight) {
+                mostRecaudationFlight = priceSum;
+                mostRecaudationF.quantityPlaces = flight.quantityPlaces;
+                mostRecaudationF.destiny = flight.destiny;
+                mostRecaudationF.recaudation = priceSum;
+                mostRecaudationF.id = flight.id;
+            }
+
+        };
+
+    }
+
+    printCustomPosterWithEndLine("El vuelo que mas recaudo es: ");
+    printEndLine();
+
+    printCustomPoster("Nro de vuelo: ");
+    printNumber(mostRecaudationF.id);
+    printTab();
+
+    printCustomPoster("Destino: ");
+    printCustomPosterWithEndLine(mostRecaudationF.destiny);
+
+    printCustomPoster("Total recaudado: ");
+    printNumber(mostRecaudationF.recaudation);
+    printCustomPosterWithEndLine(" $");
+
+    printCustomPoster("Cantidad de asientos ocupados: ");
+    printNumberWithEndl(mostRecaudationF.quantityPlaces);
 
 }
