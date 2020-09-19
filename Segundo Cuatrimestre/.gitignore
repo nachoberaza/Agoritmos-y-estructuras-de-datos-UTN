@@ -13,7 +13,7 @@ dist/
 nbdist/
 .nb-gradle/
 Makefile/
-.dep.inc/
+/.dep.inc/
 
 
 # End of https://www.toptal.com/developers/gitignore/api/netbeans
