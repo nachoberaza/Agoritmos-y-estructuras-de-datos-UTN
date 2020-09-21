@@ -1,0 +1,50 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/Operations/LocalDate.cpp
+stdio.h
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/Operations/stdio.h
+ctime
+-
+time.h
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/Operations/time.h
+
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/Operations/operations.cpp
+../input-output functions/input-output.cpp
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/input-output functions/input-output.cpp
+./LocalDate.cpp
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/Operations/LocalDate.cpp
+iostream
+-
+time.h
+-
+
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/input-output functions/input-output.cpp
+windows.h
+-
+stdio.h
+-
+tchar.h
+-
+iostream
+-
+string
+-
+string.h
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/input-output functions/string.h
+sstream
+-
+stdio.h
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/input-output functions/stdio.h
+cstdlib
+-
+
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/main.cpp
+Operations/operations.cpp
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/Operations/operations.cpp
+

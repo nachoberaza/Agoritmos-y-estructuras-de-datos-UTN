@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 04: Funciones/main/input-output functions/input-output.cpp
+windows.h
+-
+stdio.h
+-
+tchar.h
+-
+iostream
+-
+string
+-
+string.h
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 04: Funciones/main/input-output functions/string.h
+sstream
+-
+stdio.h
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 04: Funciones/main/input-output functions/stdio.h
+cstdlib
+-
+
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 04: Funciones/main/main.cpp
+operations/operations.cpp
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 04: Funciones/main/operations/operations.cpp
+
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 04: Funciones/main/operations/operations.cpp
+../input-output functions/input-output.cpp
+/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 04: Funciones/main/input-output functions/input-output.cpp
+
