@@ -148,7 +148,7 @@ fabric.properties
 # *.ipr
 
 # CMake
-
+.CMakeLists.txt
 # Mongo Explorer plugin
 
 # File-based project format
