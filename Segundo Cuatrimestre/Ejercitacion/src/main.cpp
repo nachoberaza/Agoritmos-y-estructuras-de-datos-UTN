@@ -9,7 +9,7 @@ int main(){
 	while(!exit){
 		showMessage("¡¡¡Bienvenido a la ejercitacion de estructuras dinamicas!!! ", 0);
 
-		showMessage("Seleccione el n° ejercicio que desea realizar: ", 0)
+		showMessage("Seleccione el n° ejercicio que desea realizar: ", 0);
 
 		showMessage("=== Pilas y Colas ===",0);
 		printEndline();
