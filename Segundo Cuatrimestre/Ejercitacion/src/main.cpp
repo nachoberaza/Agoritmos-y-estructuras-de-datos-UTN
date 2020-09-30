@@ -44,9 +44,6 @@ int main(){
                 break;
             }
             case 3:{
-                Alumn *alumn;
-                alumn=new Alumn;
-                inputAlumn(alumn);
 
                 break;
             }

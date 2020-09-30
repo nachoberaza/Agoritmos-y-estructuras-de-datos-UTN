@@ -5,6 +5,13 @@
 using namespace std;
 
 /* Prototypes */
+
+/* Structs */
+struct Alumn;
+struct Califications;
+struct Node;
+
+
 template<class type>
 int clearScreen();
 
@@ -17,13 +24,31 @@ int printEndline();
 template<class type>
 type inputValue();
 
-template <class type>
-int inputAlumn(type *&firstOfStack);
+int inputAlumn(Node *&firstOfStack);
 
 template<class type>
 int showMessage(type message, int option);
 
 /* ********** */
+
+
+struct Califications {
+    unsigned Algoritms;
+    unsigned Math_Analysis;
+    unsigned Geometry;
+    unsigned Discreet_Math;
+};
+
+struct Alumn {
+    string name;
+    string lastname;
+    Califications califications;
+};
+
+struct Node {
+    Alumn alumn;
+    Node *next;
+};
 
 
 template<class type>
@@ -81,8 +106,7 @@ type inputValue() {
     return value;
 }
 
-template <class type>
-int inputAlumn(type *&newNode){
+int inputAlumn(Node *&newNode){
 
     showMessage("Ingrese los datos del alumno: ",1);
 

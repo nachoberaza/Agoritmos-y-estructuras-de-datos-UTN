@@ -2,14 +2,6 @@
 
 /* ******************** Prototipos ******************* */
 
-/* Structs */
-template<typename Node>
-struct type;
-template<typename Alumn>
-struct type;
-template<typename Califications>
-struct type;
-
 /* Listas */
 template<class type>
 int addAtTheEnd(type *&first);
@@ -29,24 +21,6 @@ int unPileByCount(type *&firstOfStack, int count);
 
 /* ******************* ----------- ******************* */
 
-
-struct Califications {
-    unsigned Algoritms;
-    unsigned Math_Analysis;
-    unsigned Geometry;
-    unsigned Discreet_Math;
-};
-
-struct Alumn {
-    string name;
-    string lastname;
-    Califications califications;
-};
-
-struct Node {
-    Alumn alumn;
-    Node *next;
-};
 
 template<class type>
 int pile(type *&firstOfStack) {
@@ -82,9 +56,19 @@ int unPile(type *&firstOfStack) {
 template<class type>
 int unPileByCount(type *&firstOfStack, int count) {
     Node *auxNode;
+    Node *auxNodeToDelete;
+
+    int cont=0;
     auxNode = firstOfStack;
+    auxNodeToDelete = firstOfStack;
+
     showMessage("Desapilando...", 1);
     while(auxNode!=NULL){
-    //Seguir desde aca
+        auxNode=auxNode->next;
+
+        cont++;
     }
+
+    return 0;
 };
+
