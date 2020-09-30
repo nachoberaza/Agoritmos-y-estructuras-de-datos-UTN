@@ -2,13 +2,13 @@
 
 int main(){
 
-	bool exit=false;
-	int option;
+    bool exit=false;
+    int option;
     Node *stackOfAlumns;
     Node *listOfAlumns;
 
     showMessage("¡¡¡Bienvenido a la ejercitacion de estructuras dinamicas!!! ", 1);
-
+    
 	while(!exit){
 	    clearScreen<int>();
 		showMessage("Seleccione el n° ejercicio que desea realizar: ", 1);
