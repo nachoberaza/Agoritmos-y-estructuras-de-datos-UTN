@@ -1,3 +1,0 @@
-/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/cmake-build-debug/CMakeFiles/main.dir

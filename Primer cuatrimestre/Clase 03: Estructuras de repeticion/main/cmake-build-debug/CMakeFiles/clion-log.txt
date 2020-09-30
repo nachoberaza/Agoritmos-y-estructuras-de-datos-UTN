@@ -1,4 +1,0 @@
-/snap/clion/114/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main"
--- Configuring done
--- Generating done
--- Build files have been written to: /home/nacho/Documentos/Repositorios Git/Agoritmos-y-estructuras-de-datos-UTN/Primer cuatrimestre/Clase 03: Estructuras de repeticion/main/cmake-build-debug
