@@ -83,7 +83,7 @@ nbdist/
 .nb-gradle/
 Makefile/
 /.dep.inc/
-
+Debug/
 
 # Created by https://www.toptal.com/developers/gitignore/api/jetbrains,clion
 # Edit at https://www.toptal.com/developers/gitignore?templates=jetbrains,clion
