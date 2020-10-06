@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include "stdio.h"
 #include <string.h>
 
 using namespace std;
@@ -109,6 +110,7 @@ type inputValue() {
 int inputAlumn(Node *&newNode){
 
     showMessage("Ingrese los datos del alumno: ",1);
+    printEndline<int>();
 
     showMessage("=== Datos personales ===",1);
     showMessage("Nombre: ",2);
@@ -117,6 +119,7 @@ int inputAlumn(Node *&newNode){
     showMessage("Apellido: ",2);
     newNode->alumn.lastname=inputValue<string>();
 
+    printEndline<int>();
     showMessage("=== Calificaciones ===",1);
     showMessage("Algoritmos y Estructuras de datos: ",2);
     newNode->alumn.califications.Algoritms=inputValue<int>();

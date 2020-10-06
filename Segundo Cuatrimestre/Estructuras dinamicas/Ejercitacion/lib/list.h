@@ -9,6 +9,12 @@ int addAtTheEnd(type *&first);
 template<class type>
 int addAtTheStart(type *&first);
 
+template<class type>
+int removeNodes(type *&first);
+
+template<class type>
+int removeSince(type *&first);
+
 /* Pilas */
 template<class type>
 int pile(type *&firstOfStack);
@@ -17,7 +23,7 @@ template<class type>
 int unPile(type *&firstOfStack);
 
 template<class type>
-int unPileByCount(type *&firstOfStack, int count);
+int removeByCount(type *&firstOfStack, int count,int cont);
 
 /* ******************* ----------- ******************* */
 
@@ -42,8 +48,9 @@ int unPile(type *&firstOfStack) {
     Node *auxNode;
     auxNode = firstOfStack;
 
+    printEndline<int>();
     showMessage("Desapilando...", 1);
-    while (auxNode != NULL) {
+    while (auxNode!=NULL) {
         showMessage(auxNode->alumn.name, 1);
         auxNode = auxNode->next;
     }
@@ -53,22 +60,47 @@ int unPile(type *&firstOfStack) {
     return 0;
 };
 
+/* Elimina n nodos con recursividad */
 template<class type>
-int unPileByCount(type *&firstOfStack, int count) {
-    Node *auxNode;
-    Node *auxNodeToDelete;
+int removeByCount(type *&firstOfStack, int count,int cont) {
 
+	if(cont<count){
+		if(firstOfStack->next != NULL){
+			removeByCount(firstOfStack->next,count,cont++);
+		}
+	}
+	delete firstOfStack;
+	cout<<"el contador: "<<cont<<endl;
+	/*
+	Node *auxNode;
+    Node *auxNodeToDelete;
+    bool exit=false;
     int cont=0;
     auxNode = firstOfStack;
     auxNodeToDelete = firstOfStack;
 
-    showMessage("Desapilando...", 1);
-    while(auxNode!=NULL){
-        auxNode=auxNode->next;
-
-        cont++;
+    while(!exit){
+    	if( (auxNode != NULL) and (cont<count) ){
+    		auxNode=auxNode->next;
+    		cout<<"Desapile"<<endl;
+    		cont++;
+    	}else{
+    		exit=true;
+    	}
     }
 
+    */
+
     return 0;
+};
+
+/* Desapila con recursividad */
+template<class type>
+int removeNodes(type *&first){
+	if(first->next != NULL){
+		removeNodes(first->next());
+	}
+	delete first;
+	return 0;
 };
 

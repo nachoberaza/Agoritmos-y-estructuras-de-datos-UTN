@@ -3,9 +3,12 @@
 int main(){
 
     bool exit=false;
-    int option;
+    int option=0;
     Node *stackOfAlumns;
+    stackOfAlumns=NULL;
+
     Node *listOfAlumns;
+    listOfAlumns=NULL;
 
     showMessage("¡¡¡Bienvenido a la ejercitacion de estructuras dinamicas!!! ", 1);
     
@@ -26,6 +29,7 @@ int main(){
 
 		cout<<"Ingrese su opcion: ";
 		cin>>option;
+		clearScreen<int>();
 
         switch (option) {
             case 0:{
@@ -35,23 +39,22 @@ int main(){
             };
             case 1:{
                 pile(stackOfAlumns);
-                pause<int>();
                 break;
             };
             case 2:{
                 unPile(stackOfAlumns);
-                pause<int>();
                 break;
             }
             case 3:{
-
+                removeByCount(stackOfAlumns,2,0);
+                pause<int>();
                 break;
             }
             default:{
                 showMessage("Ingrese una opcion valida",1);
-                pause<int>();
                 break;
             }
+            pause<int>();
         }
 	}
 
