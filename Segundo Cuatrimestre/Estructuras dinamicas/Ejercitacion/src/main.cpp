@@ -50,6 +50,10 @@ int main(){
                 pause<int>();
                 break;
             }
+            case 10:{
+
+            	break;
+            }
             default:{
                 showMessage("Ingrese una opcion valida",1);
                 break;
