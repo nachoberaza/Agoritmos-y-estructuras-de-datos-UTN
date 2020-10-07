@@ -7,8 +7,10 @@ int main(){
     Node *stackOfAlumns;
     stackOfAlumns=NULL;
 
+    /*
     Node *listOfAlumns;
     listOfAlumns=NULL;
+    */
 
     showMessage("¡¡¡Bienvenido a la ejercitacion de estructuras dinamicas!!! ", 1);
     
@@ -20,8 +22,9 @@ int main(){
 		showMessage("******************** Pilas y Colas ********************",1);
 		printEndline<int>();
         showMessage("1) Apilar un alumno",1);
-        showMessage("2) Desapilar los alumnos",1);
+        showMessage("2) Mostrar los alumnos apilados",1);
 		showMessage("3) Sacar dos alumnos del tope y reemplazarlos por uno dado",1);
+		showMessage("10) Cargar los datos auxiliares",1);
 
         printEndline<int>();
 		showMessage("=== Listas enlazadas ===",1);
@@ -39,10 +42,12 @@ int main(){
             };
             case 1:{
                 pile(stackOfAlumns);
+                pause<int>();
                 break;
             };
             case 2:{
                 unPile(stackOfAlumns);
+                pause<int>();
                 break;
             }
             case 3:{
@@ -51,14 +56,16 @@ int main(){
                 break;
             }
             case 10:{
-
+            	showMessage("Apilando datos de prueba...", 1);
+            	printEndline<int>();
+            	pileAuxData(stackOfAlumns);
+            	pause<int>();
             	break;
             }
             default:{
                 showMessage("Ingrese una opcion valida",1);
                 break;
             }
-            pause<int>();
         }
 	}
 
