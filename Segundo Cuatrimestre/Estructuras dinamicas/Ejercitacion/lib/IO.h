@@ -7,13 +7,14 @@
 #endif
 
 #ifdef linux
-#include <iostream>
 #include <string>
 #include "string.h"
 #include <sstream>
 #include "stdio.h"
 #include <cstdlib>
 #endif
+
+#include <iostream>
 
 using namespace std;
 
@@ -99,7 +100,7 @@ int printEndline() {
 template<class type>
 int clearScreen() {
 	#ifdef _WIN32
-    	system("cls");
+    	system("CLS");
 	#endif
 	#ifdef linux
     	system("clear");
@@ -110,10 +111,10 @@ int clearScreen() {
 
 template<class type>
 int pause() {
-	#ifdef _WIN32
+	#ifdef WIN64
     	printCustomPosterWithEndLine("Presione enter para continuar...");
         printEndLine();
-        system("pause");
+        system("PAUSE");
 	#endif
 	#ifdef linux
         cout<< '\n' <<"Presione enter para continuar..."<<'\n';

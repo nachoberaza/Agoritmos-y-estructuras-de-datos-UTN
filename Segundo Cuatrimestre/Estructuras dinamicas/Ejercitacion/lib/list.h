@@ -45,20 +45,15 @@ int pile(type *&firstOfStack) {
 	return 0;
 }
 
+/* Desapila por recursividad */
 template<class type>
 int unPile(type *&firstOfStack) {
-	Node *auxNode;
-	auxNode = firstOfStack;
 
-	printEndline<int>();
-	showMessage("Desapilando...", 1);
-	while (auxNode != NULL) {
-		showMessage(auxNode->alumn.name, 1);
-		auxNode = auxNode->next;
+	if(firstOfStack!=NULL){
+		showMessage(firstOfStack->alumn.name,1);
+		unPile(firstOfStack->next);
 	}
-
-	delete auxNode;
-
+	delete firstOfStack;
 	return 0;
 }
 ;
@@ -68,8 +63,10 @@ template<class type>
 int removeByCount(type *&firstOfStack, int count, int cont) {
 
 	if (cont < count) {
-		if (firstOfStack->next != NULL) {
-			removeByCount(firstOfStack->next, count, cont++);
+		if (firstOfStack != NULL) {
+			cout<<"El contador es: "<<cont<<endl;
+			cont++;
+			removeByCount(firstOfStack->next, count, cont);
 		}
 	}
 	delete firstOfStack;
@@ -98,11 +95,11 @@ int removeByCount(type *&firstOfStack, int count, int cont) {
 }
 ;
 
-/* Desapila con recursividad */
+/* Remueve con recursividad */
 template<class type>
 int removeNodes(type *&first) {
-	if (first->next != NULL) {
-		removeNodes(first->next());
+	if (first != NULL) {
+		removeNodes(first->next);
 	}
 	delete first;
 	return 0;
@@ -127,13 +124,13 @@ int pileAuxData(type *&first) {
 	aux5->next = NULL;
 
 	Alumn alumn;
-	int cont=0;
-	while(cont<5){
-		nodesVector[cont]=new Node;
+	int cont = 0;
+	while (cont < 5) {
+		nodesVector[cont] = new Node;
 		cont++;
 	}
 
-	cout<<"empezando la carga del vector"<<endl;
+	cout << "empezando la carga del vector" << endl;
 
 	/* Alumno 1 */
 	alumn.name = "Nacho";
@@ -172,26 +169,25 @@ int pileAuxData(type *&first) {
 
 	cout << "termino de cargar el vector intermedio" << endl << endl;
 
+	/* Carga 1 */
+	aux5->next = NULL;
+	/* ******* */
 
 	/* Carga 2 */
-	aux4->next=aux1;
+	aux4->next = aux5;
 	/* ******* */
 
 	/* Carga 3 */
-	aux3->next=aux4;
+	aux3->next = aux4;
 	/* ******* */
 
 	/* Carga 4 */
-	aux2->next=aux3;
+	aux2->next = aux3;
 	/* ******* */
 
-	/* Carga 4 */
-	aux1->next=aux2;
-	/* ******* */
-
-	/* Carga 4 */
-	aux1->next=aux2;
-	first=aux1;
+	/* Carga 5 */
+	aux1->next = aux2;
+	first = aux1;
 	/* ******* */
 
 	showMessage("Finalizo la carga de datos de prueba", 1);
