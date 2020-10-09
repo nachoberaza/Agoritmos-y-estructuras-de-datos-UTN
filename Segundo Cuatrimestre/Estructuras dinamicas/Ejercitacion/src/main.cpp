@@ -60,7 +60,7 @@ int main() {
 			break;
 		}
 		case 3: {
-			removeByCount(stackOfAlumns, 2, 1);
+			removeByCount(stackOfAlumns, 2, 0);
 			pause<int>();
 			break;
 		}

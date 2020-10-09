@@ -60,8 +60,25 @@ int unPile(type *&firstOfStack) {
 
 /* Elimina n nodos con recursividad */
 template<class type>
-int removeByCount(type *&firstOfStack, int count, int cont) {
+int removeByCount(type *&node,int count, int cont) {
 
+	if(cont<count and node != NULL){
+		cout<<"cuenta: "<<cont<<endl;
+		cont++;
+		removeByCount(node->next,count,cont);
+	}
+	cout<<"el nombre: "<<node->alumn.name<<endl;
+	delete node;
+
+	/*
+	if(cont<count){
+		cout<<"cuenta: "<<cont<<endl;
+		cont++;
+		removeByCount<int>(count,cont);
+	}
+	*/
+
+	/*
 	if (cont < count) {
 		if (firstOfStack != NULL) {
 			cout<<"El contador es: "<<cont<<endl;
@@ -71,25 +88,7 @@ int removeByCount(type *&firstOfStack, int count, int cont) {
 	}
 	delete firstOfStack;
 	cout << "el contador: " << cont << endl;
-	/*
-	 Node *auxNode;
-	 Node *auxNodeToDelete;
-	 bool exit=false;
-	 int cont=0;
-	 auxNode = firstOfStack;
-	 auxNodeToDelete = firstOfStack;
-
-	 while(!exit){
-	 if( (auxNode != NULL) and (cont<count) ){
-	 auxNode=auxNode->next;
-	 cout<<"Desapile"<<endl;
-	 cont++;
-	 }else{
-	 exit=true;
-	 }
-	 }
-
-	 */
+	*/
 
 	return 0;
 }
