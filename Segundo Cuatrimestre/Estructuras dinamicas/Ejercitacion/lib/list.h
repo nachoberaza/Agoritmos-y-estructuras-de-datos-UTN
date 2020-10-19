@@ -88,8 +88,10 @@ int removeByCountByRecursivity(type *&node, type *&aux, int index) {
 /* Elimina n nodos con iteraciones */
 template<class type>
 int removeByCountByIterations(type *&node,int index){
-	Node *aux;
+	
+	Node *aux,*reference;
 	aux=new Node;
+	reference=node;
 
 	while( index>0 and node!=NULL ){
 		showMessage(node->alumn.name,2);

@@ -64,8 +64,8 @@ int main() {
 		}
 		case 3: {
 			Node *aux=new Node;
-			removeByCountByRecursivity(stackOfAlumns, aux ,2);
-			//removeByCountByIterations(stackOfAlumns,2);
+			//removeByCountByRecursivity(stackOfAlumns, aux ,2);
+			removeByCountByIterations(stackOfAlumns,2);
 			pause<int>();
 			break;
 		}
