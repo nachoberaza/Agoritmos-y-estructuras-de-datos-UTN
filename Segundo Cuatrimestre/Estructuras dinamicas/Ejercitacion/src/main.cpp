@@ -55,12 +55,17 @@ int main() {
 			;
 		case 2: {
 			showMessage("Desapilando...",1);
-			unPile(stackOfAlumns);
+			printEndline<int>();
+			int cant=0;
+			//removeNodesByRecursivity(stackOfAlumns,cant);
+			removeNodesByIterations(stackOfAlumns);
 			pause<int>();
 			break;
 		}
 		case 3: {
-			removeByCount(stackOfAlumns, 2, 0);
+			Node *aux=new Node;
+			removeByCountByRecursivity(stackOfAlumns, aux ,2);
+			//removeByCountByIterations(stackOfAlumns,2);
 			pause<int>();
 			break;
 		}

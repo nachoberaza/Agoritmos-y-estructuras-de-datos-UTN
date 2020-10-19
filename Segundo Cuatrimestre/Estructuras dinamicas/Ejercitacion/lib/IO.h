@@ -99,28 +99,34 @@ int printEndline() {
 
 template<class type>
 int clearScreen() {
+	system("clear");
+	/*
 	#ifdef _WIN32
-    	system("CLS");
+    	
 	#endif
 	#ifdef linux
     	system("clear");
 	#endif
-
+	*/
     return 0;
 }
 
 template<class type>
 int pause() {
+	cout<< '\n' <<"Presione enter para continuar..."<<'\n';
+	system("read _");
+	
+	/*
 	#ifdef WIN64
     	printCustomPosterWithEndLine("Presione enter para continuar...");
         printEndLine();
-        system("PAUSE");
+        system("pause");
 	#endif
 	#ifdef linux
         cout<< '\n' <<"Presione enter para continuar..."<<'\n';
     	system("read _");
 	#endif
-
+	*/
 	return 0;
 }
 
