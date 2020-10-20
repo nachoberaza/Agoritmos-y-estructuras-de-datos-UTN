@@ -9,7 +9,9 @@ int listAuxData(type *&first);
 
 /* ******************** Prototipos ******************* */
 
-/* Listas */
+template<class type>
+int showDinamicStruct(type *&first);
+
 template<class type>
 int addAtTheEnd(type *&first);
 
@@ -25,7 +27,6 @@ int removeNodesByIterations(type *&first);
 template<class type>
 int removeSince(type *&first);
 
-/* Pilas */
 template<class type>
 int pile(type *&firstOfStack);
 
@@ -49,6 +50,23 @@ int pile(type *&firstOfStack) {
 	showMessage("Alumno apilado correctamente", 1);
 	return 0;
 }
+
+/* Muestra la estructura dinamica */
+template<class type>
+int showDinamicStruct(type *&first){
+	Node *index;
+	index=first;
+	int c=1;
+	while(index!=NULL){
+		showMessage(index->alumn.name,2);
+		printNumber(c,1);
+		index=index->next;
+		c++;		
+	}
+	delete index;
+	return 0;
+}
+;
 
 /* Desapila por recursividad */
 template<class type>
@@ -87,20 +105,17 @@ int removeByCountByRecursivity(type *&node, type *&aux, int index) {
 
 /* Elimina n nodos con iteraciones */
 template<class type>
-int removeByCountByIterations(type *&node,int index){
-	
-	Node *aux,*reference;
-	aux=new Node;
-	reference=node;
+int removeByCountByIterations(type *&node,int index){	
+	Node *aux;
+	aux=node;
 
 	while( index>0 and node!=NULL ){
-		showMessage(node->alumn.name,2);
-		cout<<index<<endl;
-		aux=node->next;
+		showMessage(aux->alumn.name,2);
+		printNumber(index,1);
+		aux=aux->next;
 		node=aux;
 		index--;
 	}
-	delete aux;
 	return 0;
 }
 
@@ -125,8 +140,8 @@ int removeNodesByRecursivity(type *&first,int cont) {
 /* Remueve con iteraciones */
 template<class type>
 int removeNodesByIterations(type *&first){
-	Node *aux;
-	aux=new Node;
+	type *aux;
+	aux=new type;
 	int cont=1;
 	while(first!=NULL){
 		showMessage(first->alumn.name,2);

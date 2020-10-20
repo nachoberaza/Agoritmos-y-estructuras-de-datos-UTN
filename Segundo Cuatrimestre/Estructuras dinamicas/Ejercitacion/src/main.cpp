@@ -12,12 +12,10 @@ int main() {
 	 listOfAlumns=NULL;
 	 */
 
-	showMessage(
-			"¡¡¡Bienvenido a la ejercitacion de estructuras dinamicas!!! ",
-			1);
-
 	while (!exit) {
 		clearScreen<int>();
+		showMessage("¡¡¡Bienvenido a la ejercitacion de estructuras dinamicas!!! ",1);
+		printEndline<int>();
 		showMessage("Seleccione el n° ejercicio que desea realizar: ", 1);
 		printEndline<int>();
 
@@ -25,10 +23,9 @@ int main() {
 				1);
 		printEndline<int>();
 		showMessage("1) Apilar un alumno", 1);
-		showMessage("2) Desapilar los alumnos mostrando", 1);
-		showMessage(
-				"3) Sacar dos alumnos del tope y reemplazarlos por uno dado",
-				1);
+		showMessage("2) Mostrar la pila de alumnos", 1);
+		showMessage("3) Desapilar los alumnos mostrando", 1);
+		showMessage("4) Sacar dos alumnos del tope y reemplazarlos por uno dado",1);
 		showMessage("10) Cargar los datos auxiliares", 1);
 
 		printEndline<int>();
@@ -46,27 +43,42 @@ int main() {
 			exit = true;
 			break;
 		}
-			;
 		case 1: {
 			pile(stackOfAlumns);
 			pause<int>();
 			break;
 		}
-			;
-		case 2: {
+		case 2:{
+			showMessage("Contenido de la pila:",1);
+			printEndline<int>();
+			showDinamicStruct(stackOfAlumns);
+			pause<int>();
+			break;
+		}
+		case 3: {
 			showMessage("Desapilando...",1);
 			printEndline<int>();
-			int cant=0;
 			//removeNodesByRecursivity(stackOfAlumns,cant);
 			removeNodesByIterations(stackOfAlumns);
 			pause<int>();
 			break;
 		}
-		case 3: {
-			Node *aux=new Node;
+		case 4: {
+			showMessage("Alumnos desapilados:",1);
+			printEndline<int>();
 			//removeByCountByRecursivity(stackOfAlumns, aux ,2);
 			removeByCountByIterations(stackOfAlumns,2);
+			
+			printEndline<int>();
+			pile(stackOfAlumns);
+			printEndline<int>();
+			
+			showMessage("Nueva pila de alumnos: ",1);
+			removeNodesByIterations(stackOfAlumns);
+
+			printEndline<int>();
 			pause<int>();
+
 			break;
 		}
 		case 10: {

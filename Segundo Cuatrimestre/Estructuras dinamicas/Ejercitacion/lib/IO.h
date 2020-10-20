@@ -42,6 +42,9 @@ int inputAlumn(Node *&firstOfStack);
 template<class type>
 int showMessage(type message, int option);
 
+template<class type>
+int printNumber(type number,int option); 
+
 /* ********** */
 
 struct Califications {
@@ -88,8 +91,39 @@ int showMessage(type message, int option) {
 
 	cout << message << complement;
 
-	return 0;;
+	return 0;
 }
+
+
+template<class type>
+int printNumber(type number,int option){
+	char complement;
+
+	switch (option) {
+	case 0: {
+		complement = ' ';
+		break;
+	}
+		/* Endline */
+	case 1: {
+		complement = '\n';
+		break;
+	}
+
+		/* Tab */
+	case 2: {
+		complement = '\t';
+		break;
+	}
+
+	}
+
+	cout << number << complement;
+
+	return 0;
+
+}; 
+
 
 template<class type>
 int printEndline() {
