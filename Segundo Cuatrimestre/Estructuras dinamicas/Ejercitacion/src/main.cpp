@@ -74,7 +74,7 @@ int main() {
 			printEndline<int>();
 			
 			showMessage("Nueva pila de alumnos: ",1);
-			removeNodesByIterations(stackOfAlumns);
+			showDinamicStruct(stackOfAlumns);
 
 			printEndline<int>();
 			pause<int>();
