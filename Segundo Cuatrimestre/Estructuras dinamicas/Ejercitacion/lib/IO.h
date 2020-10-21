@@ -42,6 +42,9 @@ int inputAlumn(Node *&firstOfStack);
 template<class type>
 int showMessage(type message, int option);
 
+template<class type>
+int printNumber(type number,int option); 
+
 /* ********** */
 
 struct Califications {
@@ -88,8 +91,39 @@ int showMessage(type message, int option) {
 
 	cout << message << complement;
 
-	return 0;;
+	return 0;
 }
+
+
+template<class type>
+int printNumber(type number,int option){
+	char complement;
+
+	switch (option) {
+	case 0: {
+		complement = ' ';
+		break;
+	}
+		/* Endline */
+	case 1: {
+		complement = '\n';
+		break;
+	}
+
+		/* Tab */
+	case 2: {
+		complement = '\t';
+		break;
+	}
+
+	}
+
+	cout << number << complement;
+
+	return 0;
+
+}; 
+
 
 template<class type>
 int printEndline() {
@@ -99,28 +133,34 @@ int printEndline() {
 
 template<class type>
 int clearScreen() {
+	system("clear");
+	/*
 	#ifdef _WIN32
-    	system("CLS");
+    	
 	#endif
 	#ifdef linux
     	system("clear");
 	#endif
-
+	*/
     return 0;
 }
 
 template<class type>
 int pause() {
+	cout<< '\n' <<"Presione enter para continuar..."<<'\n';
+	system("read _");
+	
+	/*
 	#ifdef WIN64
     	printCustomPosterWithEndLine("Presione enter para continuar...");
         printEndLine();
-        system("PAUSE");
+        system("pause");
 	#endif
 	#ifdef linux
         cout<< '\n' <<"Presione enter para continuar..."<<'\n';
     	system("read _");
 	#endif
-
+	*/
 	return 0;
 }
 

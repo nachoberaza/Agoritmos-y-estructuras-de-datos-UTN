@@ -9,7 +9,9 @@ int listAuxData(type *&first);
 
 /* ******************** Prototipos ******************* */
 
-/* Listas */
+template<class type>
+int showDinamicStruct(type *&first);
+
 template<class type>
 int addAtTheEnd(type *&first);
 
@@ -17,12 +19,14 @@ template<class type>
 int addAtTheStart(type *&first);
 
 template<class type>
-int removeNodes(type *&first);
+int removeNodesByRecursivity(type *&first,int cont);
+
+template<class type>
+int removeNodesByIterations(type *&first);
 
 template<class type>
 int removeSince(type *&first);
 
-/* Pilas */
 template<class type>
 int pile(type *&firstOfStack);
 
@@ -30,8 +34,10 @@ template<class type>
 int unPile(type *&firstOfStack);
 
 template<class type>
-int removeByCount(type *&firstOfStack, int count, int cont);
+int removeByCountByRecursivity(type *&firstOfStack,type *&aux, int index);
 
+template<class type>
+int removeByCountByIterations(type *&node,int index);
 /* ******************* ----------- ******************* */
 
 template<class type>
@@ -45,6 +51,23 @@ int pile(type *&firstOfStack) {
 	return 0;
 }
 
+/* Muestra la estructura dinamica */
+template<class type>
+int showDinamicStruct(type *&first){
+	Node *index;
+	index=first;
+	int c=1;
+	while(index!=NULL){
+		showMessage(index->alumn.name,2);
+		printNumber(c,1);
+		index=index->next;
+		c++;		
+	}
+	delete index;
+	return 0;
+}
+;
+
 /* Desapila por recursividad */
 template<class type>
 int unPile(type *&firstOfStack) {
@@ -52,58 +75,86 @@ int unPile(type *&firstOfStack) {
 	if(firstOfStack!=NULL){
 		showMessage(firstOfStack->alumn.name,1);
 		unPile(firstOfStack->next);
+	}else{
+		showMessage("Pila vacia",1);
 	}
 	delete firstOfStack;
+	firstOfStack=NULL;
 	return 0;
 }
 ;
 
 /* Elimina n nodos con recursividad */
 template<class type>
-int removeByCount(type *&node,int count, int cont) {
+int removeByCountByRecursivity(type *&node, type *&aux, int index) {
 
-	if(cont<count and node != NULL){
-		cout<<"cuenta: "<<cont<<endl;
-		cont++;
-		removeByCount(node->next,count,cont);
+	if(index > 0 and node != NULL){
+		showMessage(node->alumn.name,2);
+		cout<<node->next<<'\t'<<index<<endl;
+		index--;
+		removeByCountByRecursivity(node->next,index);
+		aux=node;
+		delete node;
 	}
-	cout<<"el nombre: "<<node->alumn.name<<endl;
-	delete node;
-
-	/*
-	if(cont<count){
-		cout<<"cuenta: "<<cont<<endl;
-		cont++;
-		removeByCount<int>(count,cont);
-	}
-	*/
-
-	/*
-	if (cont < count) {
-		if (firstOfStack != NULL) {
-			cout<<"El contador es: "<<cont<<endl;
-			cont++;
-			removeByCount(firstOfStack->next, count, cont);
-		}
-	}
-	delete firstOfStack;
-	cout << "el contador: " << cont << endl;
-	*/
-
+	cout<<"El nodo: "<<node<<" Y su siguiente: "<<node->next<<endl;
+	
+	node->next=aux;
 	return 0;
 }
 ;
 
+/* Elimina n nodos con iteraciones */
+template<class type>
+int removeByCountByIterations(type *&node,int index){	
+	Node *aux;
+	aux=node;
+
+	while( index>0 and node!=NULL ){
+		showMessage(aux->alumn.name,2);
+		printNumber(index,1);
+		aux=aux->next;
+		node=aux;
+		index--;
+	}
+	return 0;
+}
+
 /* Remueve con recursividad */
 template<class type>
-int removeNodes(type *&first) {
+int removeNodesByRecursivity(type *&first,int cont) {
 	if (first != NULL) {
-		removeNodes(first->next);
+		cont++;
+		showMessage(first->alumn.name,2);
+		cout<<first->next<<endl;
+		cout<<cont<<endl;
+		removeNodesByRecursivity(first->next,cont);
+	}else{
+		printEndline<int>();
+		showMessage("---- Lista Vacia ----",1);
 	}
 	delete first;
 	return 0;
 }
 ;
+
+/* Remueve con iteraciones */
+template<class type>
+int removeNodesByIterations(type *&first){
+	type *aux;
+	aux=new type;
+	int cont=1;
+	while(first!=NULL){
+		showMessage(first->alumn.name,2);
+		cout<<cont<<endl;
+		aux=first;
+		first=aux->next;
+		delete aux;
+		cont++;
+	}
+	first=NULL;
+	return 0;
+};
+
 
 /* Carga de datos de prueba */
 template<class type>
